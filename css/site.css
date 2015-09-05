@@ -166,6 +166,8 @@ footer p{
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: white;
 }
 .team-header {
     display: table;

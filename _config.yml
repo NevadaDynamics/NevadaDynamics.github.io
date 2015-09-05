@@ -1,0 +1,13 @@
+markdown: rdiscount
+permalink: /blog/:title
+paginate: 7
+paginate_path: "/blog/page:num/"
+rdiscount:
+  extensions: [smart]
+
+gems:
+  - jekyll-sitemap
+
+name: Nevada Dynamics
+url: http://nevadadynamics.github.io/NVDWebsite
+description: Nevada Dynamics looks to be the interface for the FAA and fill the gap for companies looking to use their drones for commercial purposes.

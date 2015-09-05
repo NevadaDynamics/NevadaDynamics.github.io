@@ -1,0 +1,52 @@
+---
+layout: layout
+title: "Blog"
+---
+<header class="blog-header">
+<div class="text-vertical-center">
+    <h1>Nevada Dynamics</h1>
+    <h2>Enabling the Future of Flight</h2>
+</div>
+</header>
+<section class="content">
+<div class="container">
+<div class="row">
+<!--Left Bar-->
+<div class="col-md-2"></div>
+<div class="col-md-8">
+<!-- This loops through the paginated posts -->
+  <ul class="listing">
+    {% for post in paginator.posts %}
+      {% unless post.draft %}
+      <li>
+        <h2><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h2>
+        {% if post.author %}
+        <span class="post-meta"><strong>{{ post.author }}</strong> / {{ post.date | date: "%B %e, %Y" }}</span><br/>
+        {% else %}
+        <span class="post-meta"><strong>Staff</strong> / {{ post.date | date: "%B %e, %Y" }}</span><br/>
+        {% endif %}
+        {% if post.abstract %}
+        <span class="abstract">{{ post.abstract }}</span><br/>
+        {% endif %}
+      </li>
+      {% endunless %}
+    {% endfor %}
+  </ul>
+  <!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ site.url }}{{ paginator.previous_page_path }}" class="previous"><i class="fa fa-arrow-left"></i> Previous</a>
+  {% else %}
+    <span class="previous"><i class="fa fa-arrow-left"></i> Previous</span>
+  {% endif %}
+  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="{{ site.url }}{{ paginator.next_page_path }}" class="next">Next <i class="fa fa-arrow-right"></i></a>
+  {% else %}
+    <span class="next ">Next <i class="fa fa-arrow-right"></i></span>
+  {% endif %}
+</div>
+</div>
+<div class="col-md-2"></div>
+</div>
+</section>

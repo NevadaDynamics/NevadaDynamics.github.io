@@ -9,5 +9,5 @@ gems:
   - jekyll-sitemap
 
 name: Nevada Dynamics
-url: http://nevadadynamics.github.io/NVDWebsite
+url: http://nevadadynamics.github.io
 description: Nevada Dynamics looks to be the interface for the FAA and fill the gap for companies looking to use their drones for commercial purposes.

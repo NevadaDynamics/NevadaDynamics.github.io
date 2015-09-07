@@ -27,8 +27,6 @@ body {
     padding: 0;
     font-size: 4.5em;
     font-weight: 700;
-          -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: whitebg;
 }
 
 /* Custom Button Styles */
@@ -89,8 +87,12 @@ hr.small {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: whitebg;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
 }
 
 /* About */

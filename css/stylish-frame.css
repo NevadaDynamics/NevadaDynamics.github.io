@@ -33,6 +33,7 @@ body {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;  
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Custom Button Styles */

@@ -1,0 +1,176 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"title": "Weather",
+			"width": 1,
+			"row": {
+				"3": 11,
+				"4": 11,
+				"5": 11
+			},
+			"col": {
+				"3": 1,
+				"4": 1,
+				"5": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Wind Speed",
+						"size": "regular",
+						"value": "datasources[\"Open Weather\"][\"wind_speed\"]",
+						"sparkline": false,
+						"animate": true,
+						"units": "mph"
+					}
+				},
+				{
+					"type": "pointer",
+					"settings": {
+						"direction": "datasources[\"Open Weather\"][\"wind_direction\"]"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Conditions",
+						"size": "regular",
+						"value": "datasources[\"Open Weather\"][\"conditions\"]",
+						"animate": true
+					}
+				}
+			]
+		},
+		{
+			"title": "UAV Location",
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 1,
+				"5": 1
+			},
+			"col": {
+				"3": 1,
+				"4": 1,
+				"5": 1
+			},
+			"col_width": 4,
+			"widgets": [
+				{
+					"type": "google_map",
+					"settings": {
+						"lat": "39.5272",
+						"lon": "-119.8219"
+					}
+				}
+			]
+		},
+		{
+			"title": "Drone Status",
+			"width": 1,
+			"row": {
+				"3": 11,
+				"4": 11,
+				"5": 11
+			},
+			"col": {
+				"3": 2,
+				"4": 2,
+				"5": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Altitude",
+						"size": "regular",
+						"value": "350",
+						"animate": true,
+						"units": "meters"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Velocity",
+						"size": "regular",
+						"value": "25",
+						"sparkline": false,
+						"animate": true,
+						"units": "m/s"
+					}
+				},
+				{
+					"type": "gauge",
+					"settings": {
+						"title": "Battery",
+						"value": "50",
+						"units": "mAh",
+						"min_value": 0,
+						"max_value": "130"
+					}
+				}
+			]
+		},
+		{
+			"title": "NASA UTM",
+			"width": 1,
+			"row": {
+				"3": 11,
+				"4": 11,
+				"5": 11
+			},
+			"col": {
+				"3": 3,
+				"4": 3,
+				"5": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "indicator",
+					"settings": {
+						"title": "NASA Servers",
+						"value": "1",
+						"on_text": "Connected",
+						"off_text": "Disconencted"
+					}
+				},
+				{
+					"type": "indicator",
+					"settings": {
+						"value": "1",
+						"on_text": "Flight Plan Submitted",
+						"off_text": "Flight Plan Not Submitted"
+					}
+				},
+				{
+					"type": "indicator",
+					"settings": {
+						"value": "0",
+						"on_text": "Flight Plan Approved",
+						"off_text": "Flight Plan Not Approved"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "Open Weather",
+			"type": "openweathermap",
+			"settings": {
+				"location": "Reno, NV",
+				"units": "imperial",
+				"refresh": 10
+			}
+		}
+	],
+	"columns": 3
+}

@@ -2,10 +2,13 @@
 layout: post
 title: Left to Right
 category: posts
-abstract: This is an example abstract. Let's test how long it should be before it ruins our beautiful page, yes?
+abstract: "This is an example abstract. Let's test how long it should be before it ruins our beautiful page, yes?"
 author: Zachary Carlson
-author-title: Chief Technology Officer
+"author-title": Chief Technology Officer
+published: false
+tags: null
 ---
+
 
 Left is a clean, whitespace-happy layout for [Jekyll][jekyll].
 

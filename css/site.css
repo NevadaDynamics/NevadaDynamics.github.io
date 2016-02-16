@@ -263,7 +263,7 @@ footer p{
   position:relative;
   width:100%;
   background-position: center;
-  background-image:url(../images/s3.png);
+  background-image:url(../images/s3.png) no-repeat;
   background-attachment:fixed;
   height:600px
 }

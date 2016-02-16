@@ -311,4 +311,14 @@ footer p{
   background-repeat: no-repeat; /* don't tile the image */
   height:300px
 }
+
+#logo-1{
+  position:relative;
+  width:100%;
+  background-position: center;
+  background-image:url(../images/logo.png);
+  background-attachment:fixed;
+  background-repeat: no-repeat; /* don't tile the image */
+  height:400px
+}
     

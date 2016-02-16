@@ -301,10 +301,7 @@ footer p{
   margin-bottom:20px;
 }
 
-.gcs {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 200px;
-  height: 200px;
-}
+IMG.gcs {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }

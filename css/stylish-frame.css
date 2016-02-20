@@ -106,6 +106,14 @@ hr.small {
     text-shadow: 2px 2px 2px #000000; /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
 }
 
+.headerAbout h1 {
+    color: #FFFFFF;
+}
+
+.headerAbout h2 {
+    color: #FFFFFF;
+}
+
 .about {
     padding: 50px 0;
 }

@@ -48,5 +48,8 @@ title: "About"
  <div id="products-2"></div>
 
 <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js">
-$(element).scrollTo(document.getElementById("bottom"),800);
+setTimeout(function(){
+  //your code to be executed after 3 seconds
+  $(window).scrollTo(document.getElementById("bottom"),800);
+}, 3000); 
 </script>

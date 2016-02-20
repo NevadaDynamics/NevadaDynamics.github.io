@@ -285,6 +285,15 @@ footer div#mc_embed_signup_scroll {
   background-repeat: no-repeat; /* don't tile the image */
   height:600px
 }
+#products-2{
+  position:relative;
+  width:100%;
+  background-position: center;
+  background-image:url(../images/s3.png);
+  background-attachment:fixed;
+  background-repeat: no-repeat; /* don't tile the image */
+  height:820px
+}
 .package-block{
   max-width:300px;
   display: block;

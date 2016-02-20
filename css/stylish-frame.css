@@ -103,7 +103,9 @@ hr.small {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    text-shadow: 2px 2px 2px #FFFFFF; /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+    /*text-shadow: 2px 2px 2px #FFFFFF; /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+    text-shadow: 2px 0 0 #FFFFFF, -2px 0 0 #FFFFFF, 0 2px 0 #FFFFFF, 0 -2px 0 #FFFFFF, 1px 1px #FFFFFF, -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, -1px 1px 0 #FFFFFF;
+
 }
 
 .headerAbout h1 {

@@ -50,6 +50,7 @@ title: "About"
 <script>
 setTimeout(function(){
   //your code to be executed after 3 seconds
-  $('html, body').animate({scrollTop: $("#logo").offset().top}, 'slow');
+  /*$('html, body').animate({scrollTop: $("#bottom").offset().top}, 'slow');*/
+  $("#bottom").scrollTop($("#bottom")[0].scrollHeight);
 }, 3000); 
 </script>

@@ -48,9 +48,8 @@ title: "About"
  <div id="products-2"></div>
 
 <script>
-function pageScroll() {
-    window.scrollBy(0,1);
-    scrolldelay = setTimeout(pageScroll,10);
-}
-pageScroll();
+$(function() { // when the DOM is ready...
+    //  Move the window's scrollTop to the offset position of #now
+    $(window).scrollTop($('#bottom').offset().top);
+});
 </script>

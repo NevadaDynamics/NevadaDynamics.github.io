@@ -155,6 +155,9 @@ footer p{
     margin:0px;
     padding:5px;
 }
+footer div#mc_embed_signup_scroll {
+    text-align: -webkit-center;
+}
 /*Footer homepage eng*/
 /*BLOG HOME BEGIN*/
 .blog-header {

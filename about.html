@@ -3,7 +3,6 @@ layout: layout
 title: "About"
 ---
 
-<div id="topOuter">
 <header id="top" class="headerAbout">
   <div class="text-vertical-center">
     <IMG SRC="/images/logo.png">
@@ -11,7 +10,6 @@ title: "About"
   <br>
 </div>
 </header>
-</div>
 
 <!-- You can edit this whole page, remove it, or use it as basis for any non-post pages you have. -->
 
@@ -50,14 +48,9 @@ title: "About"
  <div id="products-2"></div>
 
 <script>
-function top() {
-    document.getElementById( 'topOuter' ).scrollIntoView();    
-};
-
-function bottom() {
-    document.getElementById( 'bottom' ).scrollIntoView();
-    window.setTimeout( function () { top(); }, 2000 );
-};
-
-bottom();
+function pageScroll() {
+    window.scrollBy(0,1);
+    scrolldelay = setTimeout(pageScroll,10);
+}
+pageScroll();
 </script>

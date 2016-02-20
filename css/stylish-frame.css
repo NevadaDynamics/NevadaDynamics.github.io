@@ -92,6 +92,19 @@ hr.small {
 
 /* About */
 
+.headerAbout {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /*background: url(http://placehold.it/1920x1080) no-repeat center center scroll;*/
+    background: url(../images/2.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
 .about {
     padding: 50px 0;
 }

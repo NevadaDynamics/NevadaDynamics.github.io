@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Nevada Dynamics Test Page</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link href='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+  <script src="http://cdn.pubnub.com/pubnub-3.7.14.min.js"></script>
+  <script type="text/javascript" src="http://pubnub.github.io/eon/lib/eon.js"></script>
+  <link type="text/css" rel="stylesheet" href="http://pubnub.github.io/eon/lib/eon.css" />
+
+
+  <div class="header">
+    <h3>nevada dynamics</h3>
+
+  </div>
+  <div class="panel">
+    <div class="row">
+
+      <div class="col-2" id="status">
+        <div id="controlBox"><h3>battery</h3>
+          <div id="batteryGauge"> </div></div>
+          <div id="controlBox"><h3>velocity</h3>
+            <div id="velocity"> </div>
+          </div>
+          <div id="controlBox"><h3>altitude</h3>
+            <div id="altitude"> </div>
+          </div>
+        </div>
+
+        <div class="col-8" id="map">
+          <script src="map.js"></script>
+        </div>
+
+        <div class="col-2" id="status">
+          <div id="controlBox">
+            <h3>drones</h3>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">select
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">3DR Iris+</a></li>
+                  <li><a href="#">3DR Solo</a></li>
+                  <li><a href="#">Custom Pixhawk</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div id="controlBox">
+              <h3>action</h3>
+              <button type="button" class="btn btn-primary">arm</button>
+              <button type="button" class="btn btn-primary">launch</button>
+              <button type="button" class="btn btn-primary">land</button>            
+              <button type="button" class="btn btn-primary">navigate</button>
+              <button type="button" class="btn btn-primary">return home</button>
+              <button type="button" class="btn btn-primary">deliver package</button>
+            </div>
+
+            <div id="controlBox">
+              <h3>tools</h3>
+              <button type="button" class="btn btn-primary">waypoint</button>
+              <button type="button" class="btn btn-primary">upload to drone</button>
+              <button type="button" class="btn btn-primary">clear</button>
+              <button type="button" class="btn btn-primary">something</button>
+            </div>
+
+            <div id="controlBox">
+              <h3>weather information</h3>
+              <ul>wind speed: <div id="windspeed"></div></ul>
+              <ul>conditions: <div id="conditions"></div></ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <script src="altitude.js"></script>
+      <script src="gauge.js"></script>
+      <script src="velocity.js"></script>
+
+      <script src="testPublish.js"></script>
+
+      <script src="weather.js"></script>
+
+
+
+
+<!--
+    <div class="row">
+      <div class="col-2">2 Columns</div>
+      <div class="col-10">10 Columns</div>
+    </div>
+    <div class="row">
+      <div class="col-3">3 Columns</div>
+      <div class="col-9">9 Columns</div>
+    </div>
+    <div class="row">
+      <div class="col-4">4 Columns</div>
+      <div class="col-4">4 Columns</div>
+      <div class="col-4">4 Columns</div>
+    </div>
+    <div class="row">
+      <div class="col-3">3 Columns</div>
+      <div class="col-6">6 Columns</div>
+      <div class="col-3">3 Columns</div>
+    </div>
+  -->
+
+</body>
+</html>

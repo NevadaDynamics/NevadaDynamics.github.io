@@ -1,147 +1,223 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>freeboard</title>
-	<meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="viewport" content = "width = device-width, initial-scale = 1, user-scalable = no" />
-    <link href="css/freeboard.min.css" rel="stylesheet" />
-    <script src="js/freeboard.thirdparty.min.js"></script>
-    <script type="text/javascript">
-        head.js("js/freeboard+plugins.min.js",
-                // *** Load more plugins here ***
-                function(){
-                    $(function()
-                    { //DOM Ready
-                        freeboard.initialize(true);
+  <meta charset="utf-8">
+  <title>Nevada Dynamics Test Page</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link href='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <!-- Radial Indicator -->
+  <script src="radial/radialIndicator.js"></script>
 
-                        var hashpattern = window.location.hash.match(/(&|#)source=([^&]+)/);
-                        if (hashpattern !== null) {
-                            $.getJSON(hashpattern[2], function(data) {
-                                freeboard.loadDashboard(data, function() {
-                                    freeboard.setEditing(false);
-                                });
-                            });
-                        }
 
-                    });
-                });
-    </script>
 </head>
 <body>
-<div id="board-content">
-    <img id="dash-logo" data-bind="attr:{src: header_image}, visible:header_image()">
-    <div class="gridster responsive-column-width">
-        <ul data-bind="grid: true">
-        </ul>
-    </div>
-</div>
-<header id="main-header" data-bind="if:allow_edit">
-    <div id="admin-bar">
-        <div id="admin-menu">
-            <div id="board-tools">
-                <h1 id="board-logo" class="title bordered">nevada dynamics</h1>
-                <div id="board-actions">
-                    <ul class="board-toolbar vertical">
-                        <li data-bind="click: loadDashboardFromLocalFile"><i id="full-screen-icon" class="icon-folder-open icon-white"></i><label id="full-screen">Load Ground Control Station</label></li>
-                        <li><i class="icon-download-alt icon-white"></i>
-                            <label data-bind="click: saveDashboardClicked">Save Ground Control Station</label>
-                            <label style="display: none;" data-bind="click: saveDashboard" data-pretty="true">[Pretty]</label>
-                            <label style="display: none;" data-bind="click: saveDashboard" data-pretty="false">[Minified]</label>
-                        </li>
-                        <li id="add-pane" data-bind="click: createPane"><i class="icon-plus icon-white"></i><label>Add Pane</label></li>
-                    </ul>
-                </div>
-            </div>
-            <div id="datasources">
-                <h2 class="title">DATASOURCES</h2>
+  <script src="http://cdn.pubnub.com/pubnub-3.7.14.min.js"></script>
+  <script type="text/javascript" src="http://pubnub.github.io/eon/lib/eon.js"></script>
+  <link type="text/css" rel="stylesheet" href="http://pubnub.github.io/eon/lib/eon.css" />
 
-                <div class="datasource-list-container">
-                    <table class="table table-condensed sub-table" id="datasources-list" data-bind="if: datasources().length">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Last Updated</th>
-                            <th>&nbsp;</th>
-                        </tr>
-                        </thead>
-                        <tbody data-bind="foreach: datasources">
-                        <tr>
-                            <td>
-                                <span class="text-button datasource-name" data-bind="text: name, pluginEditor: {operation: 'edit', type: 'datasource'}"></span>
-                            </td>
-                            <td data-bind="text: last_updated"></td>
-                            <td>
-                                <ul class="board-toolbar">
-                                    <li data-bind="click: updateNow"><i class="icon-refresh icon-white"></i></li>
-                                    <li data-bind="pluginEditor: {operation: 'delete', type: 'datasource'}">
-                                        <i class="icon-trash icon-white"></i></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <span class="text-button table-operation" data-bind="pluginEditor: {operation: 'add', type: 'datasource'}">ADD</span>
+
+  <div class="header">
+    <h3>nevada dynamics</h3>
+
+  </div>
+  <div class="panel">
+    <div class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Remember!</strong> Never fly outside of local regulations, and watch for no-fly zones
+    </div>
+
+
+
+    <div class="row">
+
+      <div class="col-2" id="status">
+        <div id="controlBox">
+          <h3>drones</h3>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">select
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">3DR Iris+</a></li>
+                <li><a href="#">3DR Solo</a></li>
+                <li><a href="#">Custom Pixhawk</a></li>
+              </ul>
             </div>
+          </div>
+
+          <div id="controlBox">
+            <h3>actions</h3>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">select
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">                  
+                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-exclamation-sign"></i> <p>arm</p></button>
+                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-circle-arrow-up"></i> <p>launch</p></button>
+                    <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-circle-arrow-down"></i> <p>land</p></button>  </a></li>
+                    <li><a href="#">
+                      <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-plane"></i> <p>navigate</p></button>
+                      <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-home"></i> <p>return home</p></button>
+                      <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-briefcase"></i> <p>deliver package</p></button>
+                    </a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="box">
+                <h3>weather information</h3>
+                <ul>wind speed: <i class="glyphicon glyphicon-leaf"></i><div id="windspeed"></div></ul>
+                <ul>conditions: <i class="glyphicon glyphicon-globe"></i><div id="conditions"></div></ul>
+              </div>
+
+
+            </div>
+
+
+
+            <div class="col-8" id="map"><script src="map.js"></script>
+            </div>
+
+
+            <div class="col-2" id="status">
+              <div id="controlBox">
+                <h3>tools</h3>
+                <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-map-marker"></i>  <p>waypoint</p></button>
+                <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i>  <p>upload to drone</p></button>
+                <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-trash"></i>  <p>clear</p></button>
+              </div>
+
+              <div id="controlBox">
+                <h3>destination</h3>
+                <form role="form">
+                  <div class="form-group">
+                    <label for="email">Latitude:</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="pwd">Longitude:</label>
+                    <input type="password" class="form-control" id="pwd">
+                  </div>
+                  <button type="submit" class="btn btn-default">Navigate</button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="rowMobile">
+
+            <div class="col-12" id="controlBox">
+              <h3>action</h3>
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-exclamation-sign"></i> <p>arm</p></button>
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-circle-arrow-up"></i> <p>launch</p></button>
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-circle-arrow-down"></i> <p>land</p></button>            
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-plane"></i> <p>navigate</p></button>
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-home"></i> <p>return home</p></button>
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-briefcase"></i> <p>deliver package</p></button>
+            </div>
+
+          </div>
+
+          <div class="rowMobile">
+
+            <div class="col-12" id="controlBox">
+              <h3>action</h3>
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-exclamation-sign"></i> <p>arm</p></button>
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-circle-arrow-up"></i> <p>launch</p></button>
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-circle-arrow-down"></i> <p>land</p></button>            
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-plane"></i> <p>navigate</p></button>
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-home"></i> <p>return home</p></button>
+              <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-briefcase"></i> <p>deliver package</p></button>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+
+            <div class="col-2" id="controlBox">
+              <h3>battery</h3><div id="batteryGauge"> </div>
+            </div>
+
+            <div class="col-2" id="box">
+              <h3>speed setting</h3><div id="velocityIndicator"> </div>
+            </div>
+
+            <div class ="col-2" id="box">
+              <h3>flight time left</h3><div id="timeIndicator"> </div>
+            </div>
+
+            <div class ="col-2" id="box">
+              <h3>gps confidence</h3><div id="gpsIndicator"> </div>
+            </div>
+
+
+            <div class ="col-2" id="box">
+              <h3>airspace</h3><div id="nasaIndicator"> </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+            <div class ="col-12">
+              <div id="controlBox"><h3>altitude</h3><div id="altitudeIndicator"> </div></div>
+            </div>
+          </div>
+
+
         </div>
-    </div>
-	<div id="column-tools" class="responsive-column-width">
-		<ul class="board-toolbar left-columns">
-			<li class="column-tool add" data-bind="click: addGridColumnLeft"><span class="column-icon right"></span><i class="icon-arrow-left icon-white"></i></li>
-			<li class="column-tool sub" data-bind="click: subGridColumnLeft"><span class="column-icon left"></span><i class="icon-arrow-right icon-white"></i></li>
-		</ul>
-		<ul class="board-toolbar right-columns">
-			<li class="column-tool sub" data-bind="click: subGridColumnRight"><span class="column-icon right"></span><i class="icon-arrow-left icon-white"></i></li>
-			<li class="column-tool add" data-bind="click: addGridColumnRight"><span class="column-icon left"></span><i class="icon-arrow-right icon-white"></i></li>
-		</ul>
-	</div>
-    <div id="toggle-header" data-bind="click: toggleEditing">
-        <i id="toggle-header-icon" class="icon-wrench icon-white"></i></div>
-</header>
 
-<div style="display:hidden">
-    <ul data-bind="template: { name: 'pane-template', foreach: panes}">
-    </ul>
-</div>
-
-<script type="text/html" id="pane-template">
-    <li data-bind="pane: true">
-        <header>
-            <h1 data-bind="text: title"></h1>
-            <ul class="board-toolbar pane-tools">
-                <li data-bind="pluginEditor: {operation: 'add', type: 'widget'}">
-                    <i class="icon-plus icon-white"></i>
-                </li>
-                <li data-bind="pluginEditor: {operation: 'edit', type: 'pane'}">
-                    <i class="icon-wrench icon-white"></i>
-                </li>
-                <li data-bind="pluginEditor: {operation: 'delete', type: 'pane'}">
-                    <i class="icon-trash icon-white"></i>
-                </li>
-            </ul>
-        </header>
-        <section data-bind="foreach: widgets">
-            <div class="sub-section" data-bind="css: 'sub-section-height-' + height()">
-                <div class="widget" data-bind="widget: true, css:{fillsize:fillSize}"></div>
-                <div class="sub-section-tools">
-                    <ul class="board-toolbar">
-                        <!-- ko if:$parent.widgetCanMoveUp($data) -->
-                        <li data-bind="click:$parent.moveWidgetUp"><i class="icon-chevron-up icon-white"></i></li>
-                        <!-- /ko -->
-                        <!-- ko if:$parent.widgetCanMoveDown($data) -->
-                        <li data-bind="click:$parent.moveWidgetDown"><i class="icon-chevron-down icon-white"></i></li>
-                        <!-- /ko -->
-                        <li data-bind="pluginEditor: {operation: 'edit', type: 'widget'}"><i class="icon-wrench icon-white"></i></li>
-                        <li data-bind="pluginEditor: {operation: 'delete', type: 'widget'}"><i class="icon-trash icon-white"></i></li>
-                    </ul>
-                </div>
+        <div class="row">
+          <div class ="col-12">
+            <div id="box">
+              <h3>Totem Alpha</h3>
+              <p>You are viewing an extraordinarily early version of the Totem ground control software by Nevada Dynamics. This is the interface that will be used to control all of your drones, from anywhere in the world. Once the drones are connected to our backend system using various hardware options that we provide, they will become accessible on this page. Everything you see here is being rendered in real time using our fast and secure messaging infrastructure, but the data is fabricated for the purposes of demonstration. Please contact mac@nevadadynamics.com with any questions.</p>
             </div>
-        </section>
-    </li>
-</script>
+          </div>
+        </div>
+      </div>
+
+
+      <script src="altitude.js"></script>
+      <script src="gauge.js"></script>
+
+
+      <script src="testPublish.js"></script>
+
+      <script src="weather.js"></script>
+      <script src="radial/radial.js"></script>
+
+
+
+
+<!--
+    <div class="row">
+      <div class="col-2">2 Columns</div>
+      <div class="col-10">10 Columns</div>
+    </div>
+    <div class="row">
+      <div class="col-3">3 Columns</div>
+      <div class="col-9">9 Columns</div>
+    </div>
+    <div class="row">
+      <div class="col-4">4 Columns</div>
+      <div class="col-4">4 Columns</div>
+      <div class="col-4">4 Columns</div>
+    </div>
+    <div class="row">
+      <div class="col-3">3 Columns</div>
+      <div class="col-6">6 Columns</div>
+      <div class="col-3">3 Columns</div>
+    </div>
+  -->
 
 </body>
 </html>
